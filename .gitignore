@@ -1,3 +1,4 @@
 .python-version
 .venv
 **/input.txt
+**/__pycache__/
