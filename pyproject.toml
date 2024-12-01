@@ -40,7 +40,6 @@ select = [
     "I",   # isort
     "UP",  # pyupgrade
     "PL",  # Pylint
-    "T201", # Print Statement
 ]
 
 
