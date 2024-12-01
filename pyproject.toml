@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "aoc-2024"
 version = "0.1.0"
-description = "My solutions for Advent of Code 2023"
+description = "My solutions for Advent of Code 2024."
 authors = ["Kamil Zych <42911623+vonHousen@users.noreply.github.com>"]
 license = "MIT license"
 readme = "README.md"
@@ -26,7 +26,7 @@ exclude_lines = ["pragma: no cover", "raise NotImplementedError"]
 [tool.ruff]
 line-length = 120
 show-fixes = true
-include = ["pyproject.toml", "src/**/*.py", "scripts/**/*.py"]
+include = ["pyproject.toml", "**/*.py"]
 
 [tool.ruff.format]
 docstring-code-format = true
@@ -64,11 +64,4 @@ quiet = false
 whitelist-regex = []
 color = true
 omit-covered-files = false
-exclude = [
-    # kedro-generated files
-    "conf/",
-    "docs/",
-    "src/aygo_fuel_consumption/hooks.py",
-    "src/aygo_fuel_consumption/__main__.py",
-    "tests/test_run.py",
-]
+exclude = []
