@@ -16,3 +16,59 @@ pre-commit = "^4.0.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.report]
+fail_under = 0
+show_missing = true
+exclude_lines = ["pragma: no cover", "raise NotImplementedError"]
+
+
+[tool.ruff]
+line-length = 120
+show-fixes = true
+include = ["pyproject.toml", "src/**/*.py", "scripts/**/*.py"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+ignore = ["E501"]  # Ruff format takes care of line-too-long
+select = [
+    "F",   # Pyflakes
+    "W",   # pycodestyle
+    "E",   # pycodestyle
+    "I",   # isort
+    "UP",  # pyupgrade
+    "PL",  # Pylint
+    "T201", # Print Statement
+]
+
+
+[tool.interrogate]
+ignore-init-method = false
+ignore-init-module = true
+ignore-magic = true
+ignore-semiprivate = false
+ignore-private = true
+ignore-property-decorators = false
+ignore-module = true
+ignore-nested-functions = true
+ignore-nested-classes = false
+ignore-setters = true
+ignore-overloaded-functions = false
+fail-under = 95
+ext = []
+style = "google"
+verbose = 0
+quiet = false
+whitelist-regex = []
+color = true
+omit-covered-files = false
+exclude = [
+    # kedro-generated files
+    "conf/",
+    "docs/",
+    "src/aygo_fuel_consumption/hooks.py",
+    "src/aygo_fuel_consumption/__main__.py",
+    "tests/test_run.py",
+]
