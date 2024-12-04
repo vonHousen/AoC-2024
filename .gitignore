@@ -1,5 +1,5 @@
 .python-version
 .venv
 .ruff_cache
-**/input.txt
+**/*.txt
 **/__pycache__/
