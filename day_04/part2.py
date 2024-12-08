@@ -23,7 +23,7 @@ def is_xmas(txt: np.ndarray) -> bool:
 def count_all_xmas(txt: np.ndarray) -> int:
     """Count all occurrences of 2D X-MAS word."""
     all_occurrences = 0
-    for window in slide_3x3_window(word_search_input):
+    for window in slide_3x3_window(txt):
         rotated_window = window
         for _ in range(4):  # check: [90deg, 180deg, 270deg, 360deg]
             rotated_window = np.rot90(rotated_window)
