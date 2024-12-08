@@ -31,8 +31,8 @@ def count_all(txt: np.ndarray) -> int:
         count_vertical(txt, reversed=True),
         count_diagonal(txt),
         count_diagonal(txt, reversed=True),
-        count_diagonal(txt.T),
-        count_diagonal(txt.T, reversed=True),
+        count_diagonal(np.flip(txt, axis=0)),
+        count_diagonal(np.flip(txt, axis=0), reversed=True),
     ]
     print(counts)
     return sum(counts)
