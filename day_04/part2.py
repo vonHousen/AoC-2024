@@ -5,7 +5,8 @@ import numpy as np
 
 def slide_3x3_window(txt: np.ndarray) -> Iterator[np.ndarray]:
     """Slide a window over given text and get all 3x3 squares."""
-    yield from iter(np.lib.stride_tricks.sliding_window_view(txt, window_shape=(3, 3)))
+    for windows in np.lib.stride_tricks.sliding_window_view(txt, window_shape=(3, 3)):
+        yield from iter(windows)
 
 
 def is_xmas(txt: np.ndarray) -> bool:
@@ -22,16 +23,15 @@ def is_xmas(txt: np.ndarray) -> bool:
 def count_all_xmas(txt: np.ndarray) -> int:
     """Count all occurrences of 2D X-MAS word."""
     all_occurrences = 0
-    for windows in slide_3x3_window(word_search_input):
-        for window in windows:
-            rotated_window = window
-            for _ in range(4):
-                rotated_window = np.rot90(rotated_window)
-                if not is_xmas(rotated_window):
-                    continue
+    for window in slide_3x3_window(word_search_input):
+        rotated_window = window
+        for _ in range(4):  # check: [90deg, 180deg, 270deg, 360deg]
+            rotated_window = np.rot90(rotated_window)
+            if not is_xmas(rotated_window):
+                continue
 
-                all_occurrences += 1
-                break
+            all_occurrences += 1
+            break
 
     return all_occurrences
 
